@@ -1,28 +1,31 @@
 # 8 Ball Pool → HTML (Browser)
 
-Projeto que converte o jogo **8 Ball Pool v55.2.3** (APK da Miniclip) para execução no navegador via HTML + WebAssembly.
+Projeto que converte jogos de APK para execução no navegador via HTML + WebAssembly.
 
-## Como funciona o projeto
+## Jogos convertidos
 
-1. O APK original (`8-ball-pool-v55.2.3-apkvision.apk`) contém o engine de jogo em C++ nativo (bibliotecas `libgame-*.so`).
-2. A Miniclip disponibilou uma versão web do jogo que usa **WebAssembly** (`wasm_guest_1.0.0_73372`) + HTML5 Canvas + RequireJS.
-3. O arquivo `8-ball-pool.html` carrega essa versão web no navegador e inicializa o game.
+1. **8 Ball Pool v55.2.3** (Miniclip) — engine portada para WebAssembly (`wasm_guest_1.0.0_73372`) pela própria Miniclip; roda via RequireJS + WebAssembly no canvas.
+
+2. **GTA San Andreas (Definitive)** — roda no browser via WebAssembly (PCSX2 / TabStation / revcDOS) no site [pixr.dev/gta/gtasa](https://pixr.dev/gta/gtasa/).
+
+## Como funciona
+
+- O APK original (`8-ball-pool-v55.2.3-apkvision.apk`) contém o engine de jogo em C++ nativo (bibliotecas `libgame-*.so`).
+- Para o 8 Ball Pool: a Miniclip disponibilou uma versão web que usa WebAssembly (`wasm_guest_1.0.0_73372`) + HTML5 Canvas + RequireJS.
+- Para o GTA San Andreas: há portas de engine para WebAssembly que rodam o jogo no navegador.
 
 ## Como rodar
 
-- Abrir o `8-ball-pool.html` no navegador via servidor local:
-  ```bash
-  python3 -m http.server 8000
-  ```
-  e acessar `http://localhost:8000/8-ball-pool.html`
-- Ou acessar diretamente a versão oficial: `https://prod-web-pool.miniclip.com/mc`
+- **8 Ball Pool:** abrir o `8-ball-pool.html` no navegador (via servidor local: `python3 -m http.server 8000` → `http://localhost:8000/8-ball-pool.html`) ou acessar `https://prod-web-pool.miniclip.com/mc`.
+- **GTA San Andreas:** abrir o `gta_san_andreas.html` (iframe aponta para `https://pixr.dev/gta/gtasa/`).
 
 ## Arquivos
 
 - `8-ball-pool.html` — HTML que roda o jogo 8 Ball Pool no browser
+- `gta_san_andreas.html` — HTML que roda o jogo GTA San Andreas no browser (via WebAssembly / PCSX2)
 - `8-ball-pool-v55.2.3-apkvision.apk` — APK original (não versionado por limite do Git/GitHub)
 
 ## Observações
 
-- O jogo requer conexão com internet (CDN + game servers).
-- A conversão foi feita a partir da versão web oficial da Miniclip, que é a base do engine do APK.
+- Os jogos exigem conexão com internet (CDN + game servers).
+- As conversões foram feitas a partir das versões web/portas WebAssembly disponíveis.
